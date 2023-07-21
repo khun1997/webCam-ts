@@ -1,0 +1,28 @@
+.btnContainer {
+  width: 160px;
+  height: 75px;
+  margin-top: 82px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 92px;
+  background-color: #997c43;
+}
+
+.btn {
+  width: 90px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #fff0cf;
+  border: none;
+  background-color: #997c43;
+}
+
+@media only screen and (max-width :393px ){
+.btnContainer{
+    margin-top: 204px;
+}
+  }
