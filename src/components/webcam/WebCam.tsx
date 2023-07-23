@@ -5,7 +5,6 @@ type WebCamProps = {
 };
 
 const WebCam: React.FC<WebCamProps> = ({ videoRef }) => {
-    
   useEffect(() => {
     const getVideo = async () => {
       try {
@@ -22,7 +21,6 @@ const WebCam: React.FC<WebCamProps> = ({ videoRef }) => {
     };
 
     getVideo();
-
   }, [videoRef]);
 
   return (
