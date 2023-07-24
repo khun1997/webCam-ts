@@ -6,12 +6,12 @@ type BtnProps = {
   onClick: () => void;
 };
 
-const Button: React.FC<BtnProps> = ({ value, onClick }) => {
+const Button: React.FC<BtnProps> = React.memo(({ value, onClick }) => {
   return (
     <div className="btnContainer" onClick={onClick}>
       <button className="btn" >{value}</button>
     </div>
   );
-};
+});
 
 export default Button;

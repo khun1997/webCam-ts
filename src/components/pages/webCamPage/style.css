@@ -1,4 +1,6 @@
-.mainContainer {
+/* .mainContainer {
+  width: 1000px;
+  height: 1000px;
   position: fixed;
   display: flex;
   inset: 0;
@@ -6,6 +8,8 @@
   align-items: center;
   flex-direction: column;
   background-color: #fff;
+  padding: 10px;
+  background-color: yellow;
 }
 
 .webCamContainer {
@@ -17,12 +21,13 @@
   border-radius: 50%;
   overflow: hidden;
   background-color: rgb(248, 244, 244);
+  background-color: red;
 }
 
 @media only screen and (max-width: 1540px) {
   .mainContainer {
-    width: 1533px;
-    height: 843px;
+    width: 100vw;
+    height: 100vh;
   }
 
   .webCamContainer {
@@ -31,14 +36,9 @@
   }
 }
 
-/* mobile */
 @media only screen and (max-width: 767.9px) {
-  .mainContainer {
-    width: 390px;
-    height: 867px;
-  }
   .webCamContainer {
     width: 280px;
     height: 280px;
   }
-}
+} */

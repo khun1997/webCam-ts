@@ -24,8 +24,8 @@ const WebCam: React.FC<WebCamProps> = ({ videoRef }) => {
   }, [videoRef]);
 
   return (
-    <div>
-      <video ref={videoRef} autoPlay muted />
+    <div style={{width:'100%',height:'100%'}}>
+      <video ref={videoRef} autoPlay muted  width={"100%"} height={"100%"} />
     </div>
   );
 };

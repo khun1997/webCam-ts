@@ -1,7 +1,8 @@
 import React from "react";
+import "./style.css";
 
 type PhotoProps = {
-  photo: string | null ;
+  photo: string | null;
 };
 
 const Photo: React.FC<PhotoProps> = ({ photo }) => {
@@ -10,7 +11,7 @@ const Photo: React.FC<PhotoProps> = ({ photo }) => {
   }
   return (
     <div>
-      <img src={photo} />
+      <img src={photo} width={"100%"} height={"100%"} />
     </div>
   );
 };
