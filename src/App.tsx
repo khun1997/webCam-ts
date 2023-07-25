@@ -1,40 +1,17 @@
 import "./App.css";
-import WebCamPage from "./components/pages/webCamPage/WebCamPage";
+import Webcam_1 from "./components/webcam_1/Webcam_1";
 
 function App() {
   return (
-    <div style={{ display: "flex", marginRight: "100px" }}>
-      <div
-        style={{
-          width: 300,
-          height: 300,
-          background: "red",
-          display: "flex",
-          justifyContent: "center",
-          alignContent: "center",
-        }}
-      >
-        <WebCamPage />
+    <div>
+      <div style={{ width: "400px", height: "400px", background: "red" }}>
+        <Webcam_1 />
       </div>
-
-      <div
-        style={{
-          width: "100px",
-          height: "100px",
-          background: "yellow",
-        }}
-      >
-        <WebCamPage />
+      <div style={{ width: "200px", height: "150px", background: "red" }}>
+        <Webcam_1 />
       </div>
-      <div
-        style={{
-          width: "200px",
-          height: "200px",
-          background: "green",
-          marginTop: "20px",
-        }}
-      >
-        <WebCamPage />
+      <div style={{ width: "300px", height: "250px", background: "red" }}>
+        <Webcam_1 />
       </div>
     </div>
   );

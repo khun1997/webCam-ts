@@ -1,11 +1,11 @@
 import { useCallback, useRef, useState } from "react";
-import "./style.css";
-import WebCam from "../../webcam/WebCam";
-import Loading from "../../loading/Loading";
-import Photo from "../../photo/Photo";
-import Button from "../../button/Button";
+import Loading from "../loading/Loading";
+import Photo from "../photo/Photo";
+import Button from "../button/Button";
+import WebCam from "../webcam/WebCam";
 
-const WebCamPage = () => {
+
+const Webcam_1 = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [picture, setPicture] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -51,16 +51,14 @@ const WebCamPage = () => {
   }, [videoRef.current]);
 
   return (
-    // <div className="mainContainer">
-    // <div className="webCamContainer">
+  
     <div style={{ width: "100%", height: "100%" }}>
       {isLoading || isCaptureLoading ? (
         <div style={{ width: "100%", height: "100%" }}>
           <Loading />
-          {/* <Button onClick={retake} value="ReCapture" /> */}
         </div>
       ) : (
-        <div style={{width:'100%',height:'100%',display:'flex',justifyContent:'center',alignItems:'center',objectFit:'fill'}}>
+        <div style={{width:'100%',height:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
           {picture ? (
             <div>
               <Photo photo={picture} />
@@ -78,4 +76,4 @@ const WebCamPage = () => {
   );
 };
 
-export default WebCamPage;
+export default Webcam_1;
