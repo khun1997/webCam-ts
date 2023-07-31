@@ -1,79 +1,53 @@
-import { useCallback, useRef, useState } from "react";
-import Loading from "../loading/Loading";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 import Photo from "../photo/Photo";
 import Button from "../button/Button";
+import useWebcam from "../customHook/useWebcam";
 import WebCam from "../webcam/WebCam";
 
+export type IWebCam = {
+  capture: () => void;
+};
 
-const Webcam_1 = () => {
+export const Webcam_1 = forwardRef<IWebCam>(({}, ref) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [picture, setPicture] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isCaptureLoading, setIsCaptureLoading] = useState(false);
-  const getScreenShot = () => {
-    if (videoRef.current) {
-      const canvas = document.createElement("canvas");
-      const context = canvas.getContext("2d");
+  const containerRef = useRef<HTMLDivElement>(null);
 
-      if (context) {
-        const videoWidth = videoRef.current.videoWidth;
-        const videoHeight = videoRef.current.videoHeight;
+  const { picture, retake, shoot } = useWebcam(videoRef);
 
-        canvas.width = videoWidth;
-        canvas.height = videoHeight;
-        context.drawImage(videoRef.current, 0, 0, videoWidth, videoHeight);
+  useImperativeHandle(
+    ref,
+    () => ({
+      capture: shoot,
+    }),
+    [shoot]
+  );
 
-        return canvas.toDataURL();
-      }
-    }
-    return null;
-  };
-
-  const shoot = useCallback(() => {
-    if (videoRef.current) {
-      setIsCaptureLoading(true);
-      setIsLoading(true);
-      const Image = getScreenShot();
-      setPicture(Image);
-      setIsCaptureLoading(false);
-      setIsLoading(false);
-    }
-  }, [videoRef.current]);
-
-  const retake = useCallback(() => {
-    setIsCaptureLoading(true);
-    setIsLoading(true);
-    setTimeout(() => {
-      setPicture(null);
-      setIsCaptureLoading(false);
-      setIsLoading(false);
-    }, 500);
-  }, [videoRef.current]);
+  const width = containerRef.current?.clientWidth;
 
   return (
-  
-    <div style={{ width: "100%", height: "100%" }}>
-      {isLoading || isCaptureLoading ? (
-        <div style={{ width: "100%", height: "100%" }}>
-          <Loading />
+    <div
+      ref={containerRef}
+      style={{
+        minHeight: 50,
+        height: width,
+        background: "",
+        marginRight:''
+      }}
+    >
+      {picture ? (
+        <div>
+          <Photo photo={picture} />
+          <Button onClick={retake} value="ReCapture" />
         </div>
       ) : (
-        <div style={{width:'100%',height:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
-          {picture ? (
-            <div>
-              <Photo photo={picture} />
-              <Button onClick={retake} value="ReCapture" />
-            </div>
-          ) : (
-            <div>
-              <WebCam videoRef={videoRef} />
-              <Button onClick={shoot} value="Capture" />
-            </div>
-          )}
+        <div>
+          <WebCam videoRef={videoRef} />
+          <Button onClick={shoot} value="Capture" />
         </div>
       )}
     </div>
+    // </div>
   );
-};
+});
 
 export default Webcam_1;
